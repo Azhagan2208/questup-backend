@@ -1,20 +1,22 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Database Connection
-# Using PostgreSQL (Supabase or Local)
-# Ensure your DATABASE_URL is set in the .env file
-# Example: postgresql+psycopg2://user:password@host:port/dbname
-DB_URL = os.getenv("DATABASE_URL")
+USER = os.getenv("user")
+PASSWORD = os.getenv("password")
+HOST = os.getenv("host")
+PORT = os.getenv("port")
+DBNAME = os.getenv("dbname")
 
-if not DB_URL:
+# Database Connection
+DATABASE_URL = f"postgresql+psycopg2://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}?sslmode=require"
+
+if not DATABASE_URL:
     raise ValueError("No DATABASE_URL found in environment variables. Please check your .env file.")
 
-engine = create_engine(DB_URL)
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
