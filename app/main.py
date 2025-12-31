@@ -15,11 +15,11 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Questup Backend")
 
-# mounting the frontend static files
-app.mount("/css", StaticFiles(directory="../css"), name="css")
-app.mount("/js", StaticFiles(directory="../js"), name="js")
-app.mount("/pages", StaticFiles(directory="../pages", html=True), name="pages")
-app.mount("/assests", StaticFiles(directory="../assests"), name="assests")
+# # mounting the frontend static files
+# app.mount("/css", StaticFiles(directory="../css"), name="css")
+# app.mount("/js", StaticFiles(directory="../js"), name="js")
+# app.mount("/pages", StaticFiles(directory="../pages", html=True), name="pages")
+# app.mount("/assests", StaticFiles(directory="../assests"), name="assests")
 
 # Enable CORS for frontend
 app.add_middleware(
@@ -37,21 +37,21 @@ app.include_router(answer)
 app.include_router(vote)
 
 
+# @app.get("/")
+# async def read_index():
+#     return FileResponse("../index.html")
+
+
+# @app.get("/index.html")
+# async def read_index_explicit():
+#     return FileResponse("../index.html")
+
+
+# @app.get("/admin")
+# async def read_admin():
+#     return FileResponse("../pages/admin-approve.html")
+
+
 @app.get("/")
-async def read_index():
-    return FileResponse("../index.html")
-
-
-@app.get("/index.html")
-async def read_index_explicit():
-    return FileResponse("../index.html")
-
-
-@app.get("/admin")
-async def read_admin():
-    return FileResponse("../pages/admin-approve.html")
-
-
-@app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"Questup" : "Api is running successfully!!!"}
