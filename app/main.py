@@ -54,9 +54,9 @@ app.include_router(vote)
 
 @app.get("/")
 def home():
-    return {"Questup" : "Api is running successfully!!!"}
+    return {"Questup": "Api is running successfully!!!"}
 
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "Running Sucesfully!!!"}
