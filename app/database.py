@@ -8,7 +8,7 @@ load_dotenv()
 USER = os.getenv("user")
 PASSWORD = os.getenv("password")
 HOST = os.getenv("host")
-PORT = os.getenv("port")
+PORT = os.getenv("dbport")
 DBNAME = os.getenv("dbname")
 
 # Database Connection
