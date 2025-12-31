@@ -5,14 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-USER = os.getenv("user")
-PASSWORD = os.getenv("password")
-HOST = os.getenv("host")
-PORT = os.getenv("dbport")
-DBNAME = os.getenv("dbname")
-
 # Database Connection
-DATABASE_URL = f"postgresql+psycopg2://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}?sslmode=require"
+DATABASE_URL = os.getenv("DB_URL")
 
 if not DATABASE_URL:
     raise ValueError("No DATABASE_URL found in environment variables. Please check your .env file.")
